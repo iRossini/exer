@@ -9,6 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Table(name = "SSSP_INSTRUMENT")
 @Entity
@@ -18,6 +22,7 @@ public class Instrument {
 	private String name;
 	private String factory;
 	private String type;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date buyTime;
 	private Department department;
 
@@ -55,6 +60,7 @@ public class Instrument {
 		this.type = type;
 	}
 
+	@Temporal(TemporalType.DATE)
 	@Column(name = "BUY_TIME")
 	public Date getBuyTime() {
 		return buyTime;

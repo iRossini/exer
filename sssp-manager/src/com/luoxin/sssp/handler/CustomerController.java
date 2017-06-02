@@ -57,8 +57,10 @@ public class CustomerController {
 	// 完成添加：
 	@RequestMapping(value = "/customer-save", method = RequestMethod.POST)
 	public String save(Customer customer) {
+
 		customerService.saveOrUpdate(customer);
-		return "redirect:customer-list";
+
+		return "redirect:/customer-list";
 	}
 
 	// 修改客户信息

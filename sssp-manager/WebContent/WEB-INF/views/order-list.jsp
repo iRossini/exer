@@ -6,39 +6,36 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="scripts/jquery-1.8.2.min.js"></script>
-<script type="text/javascript">
-	$(function() {
-		$(".delete").click(function() {
-			var href = $(this).attr("href");
-			$("form").attr("action", href).submit();
-			return false;
-		});
-		$(".delete").click(function() {
-			var name = $(this).next(":hidden").val();
-			var flag = confirm("确定要删除 " + name + " 的信息吗？");
-			if (flag) {
-				var $tr = $(this).parent().parent();
-				var url = this.href;
-				var args = {
-					"time" : new Date()
-				}
-				$.post(url, args, function(data) {
-					if (data == "1") {
-						alert("删除成功！");
-						$tr.remove();
-					} else {
-						alert("删除失败！");
-					}
-				});
-			}
-			return false;
-		});
+<%
+	pageContext.setAttribute("APP_PATH", request.getContextPath());
+%>
 
-	})
-</script>
+<script src="${APP_PATH}/scripts/jquery-2.1.1.min.js"></script>
+<link rel="stylesheet"
+	href="${APP_PATH}/bootstrap/css/bootstrap.min.css">
+<script src="${APP_PATH}/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
+	<!-- Modal -->
+	<div class="modal fade" id="orderShowModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+				</div>
+				<div class="modal-body">...</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-primary">保存</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<h4>设备显示</h4>
 	<c:if test="${!empty requestScopre.instruments}">没有任何仪器信息</c:if>
 	<c:if test="${empty requestScopre.instruments}">
@@ -71,5 +68,13 @@
 	<form action="" method="POST">
 		<input type="hidden" name="_method" value="DELETE" />
 	</form>
+	<script>
+		$(function() {
+			$(document).on("click", "#orderShow", function() {
+				$("#orderShowModal").modal()
+			})
+
+		});
+	</script>
 </body>
 </html>

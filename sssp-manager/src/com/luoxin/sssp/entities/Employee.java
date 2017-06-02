@@ -12,13 +12,17 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Table(name = "SSSP_EMPLOYEE")
 @Entity
 public class Employee {
 	private Integer id;
 	private String name;
 	private String phone;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date birth;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date joinTime;
 	private String password;
 	private Department department;
@@ -58,7 +62,7 @@ public class Employee {
 		this.birth = birth;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	@Column(name = "JOIN_TIME")
 	public Date getJoinTime() {
 		return joinTime;

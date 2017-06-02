@@ -31,8 +31,8 @@
 					<li class="layui-nav-item"><a href="javascript:void(0)">员工√</a>
 					</li>
 					<li class="layui-nav-item"><a href="javascript:void(0)">仪器√</a>
-
 					</li>
+
 					<li class="layui-nav-item"><a href="logout">退出</a></li>
 				</ul>
 
@@ -61,7 +61,7 @@
 						target="main"> <i class="layui-icon">&#xe609;</i> <cite>所有客户√</cite>
 					</a></li>
 					<li class="layui-nav-item "><a href="customer-input"
-						target="main"> <i class="layui-icon">&#xe60a;</i> <cite>新增客户</cite>
+						target="main"> <i class="layui-icon">&#xe60a;</i> <cite>新增客户√</cite>
 					</a></li>
 				</ul>
 				<!-- 流转单： -->
@@ -98,7 +98,7 @@
 						href="department-list" target="main"> <cite>所有部门√</cite>
 					</a></li>
 					<li class="layui-nav-item"><a href="department-input"
-						target="main"> <cite>新增部门</cite>
+						target="main"> <cite>新增部门√</cite>
 					</a></li>
 				</ul>
 				<!-- 员工： -->
@@ -109,7 +109,12 @@
 					</a></li>
 
 					<li class="layui-nav-item"><a href="emp-input" target="main">
-							<cite>新增员工</cite>
+							<cite>新增员工√</cite>
+					</a></li>
+					<li class="layui-nav-item "><a href="#123" target="main">
+							<cite>个人资料</cite>
+					</a></li>
+					<li class="layui-nav-item"><a href="#123" target="main"><cite>修改密码</cite>
 					</a></li>
 				</ul>
 				<!-- 仪器： -->
@@ -120,7 +125,7 @@
 					</a></li>
 
 					<li class="layui-nav-item"><a href="instrument-input"
-						target="main"> <cite>新增仪器</cite>
+						target="main"> <cite>新增仪器√</cite>
 					</a></li>
 				</ul>
 

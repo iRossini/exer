@@ -8,10 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<input>
 	<h4>添加新仪器</h4>
 	<form:form action="instrument" method="POST"
-		modelAttribute="insturment">
+		modelAttribute="instrument">
 	 仪器名称：<form:input path="name" />
 		<br>
 	生产厂家：<form:input path="factory" />

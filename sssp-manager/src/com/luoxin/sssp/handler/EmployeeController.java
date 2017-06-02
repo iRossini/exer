@@ -3,10 +3,15 @@ package com.luoxin.sssp.handler;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -58,7 +63,7 @@ public class EmployeeController {
 	@RequestMapping(value = "/emp-save", method = RequestMethod.POST)
 	public String save(Employee employee) {
 		employeeService.saveOrUpdate(employee);
-		return "save";
+		return "redirect:/emp-list";
 	}
 
 	// 使用Ajax 删除一个员工

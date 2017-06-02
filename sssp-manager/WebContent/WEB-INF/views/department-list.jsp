@@ -9,24 +9,33 @@
 <%
 	pageContext.setAttribute("APP_PATH", request.getContextPath());
 %>
-<!-- 引入Bootstrap样式 -->
+
+<script src="${APP_PATH}/scripts/jquery-2.1.1.min.js"></script>
 <link rel="stylesheet"
 	href="${APP_PATH}/bootstrap/css/bootstrap.min.css">
-<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script src="${APP_PATH}/bootstrap/js/bootstrap.min.js"></script>
-<!-- 引入jQuery -->
-<script type="text/javascript" src="scripts/jquery-1.8.2.min.js"></script>
-<script type="text/javascript">
-	$(function() {
-		$(".delete").click(function() {
-			var href = $(this).attr("href");
-			$("form").attr("action", href).submit();
-			return false;
-		});
-	})
-</script>
 </head>
 <body>
+	<!--部门信息修改 Modal -->
+	<div class="modal fade" id="deptEditModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">修改部门信息：</h4>
+				</div>
+				<div class="modal-body">...</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-primary">保存</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="container">
 		<!-- 标题 -->
 		<div class="row ">
@@ -50,7 +59,8 @@
 								<td>${department.id}</td>
 								<td>${department.departmentName}</td>
 								<!-- <a href="emp-edit/${employee.id}">修改</a> -->
-								<td><button class="btn btn-success btn-sm">
+								<td><button class="btn btn-success btn-sm"
+										id="departmentShow">
 										<span class="glyphicon glyphicon-pencil"></span>修改
 									</button></td>
 								<!-- <a href="emp-delete/${employee.id}" class="delete">删除</a> -->
@@ -90,5 +100,13 @@
 			</div>
 		</div>
 	</div>
+	<script>
+		$(function() {
+			$(document).on("click", "#departmentShow", function() {
+				$("#deptEditModal").modal()
+			})
+
+		});
+	</script>
 </body>
 </html>

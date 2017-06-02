@@ -9,32 +9,53 @@
 <%
 	pageContext.setAttribute("APP_PATH", request.getContextPath());
 %>
-<!-- 引入Bootstrap样式 -->
+
+<script src="${APP_PATH}/scripts/jquery-2.1.1.min.js"></script>
 <link rel="stylesheet"
 	href="${APP_PATH}/bootstrap/css/bootstrap.min.css">
-<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script src="${APP_PATH}/bootstrap/js/bootstrap.min.js"></script>
-<!-- 引入jQuery -->
-<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-<script type="text/javascript">
-	$(function(){
-		alert("加载完成");
-		$(".delete").click(function() {
-				var href = $(this).attr("href");
-				$("form").attr("action", href).submit();
-				return false;
-			});
-		$(".tr").click(function() {
-				alert("表格被单击");
-					  $(this).append("<strong>这是新加的</strong>");
-					});
-					 
-				
-				});
-	})
-</script>
 </head>
 <body>
+	<!--订单显示模态框 -->
+	<div class="modal fade" id="orderShowModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">查看该客户所有订单号</h4>
+				</div>
+				<div class="modal-body">...</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-primary">保存</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--客户信息编辑模态框 -->
+	<div class="modal fade" id="customerEditModal" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">修改客户信息</h4>
+				</div>
+				<div class="modal-body">...</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-primary">保存</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="container">
 		<!-- 标题 -->
 		<div class="row ">
@@ -64,9 +85,14 @@
 								<td>${customer.address}</td>
 								<td>${customer.contacts}</td>
 								<td>${customer.phone}</td>
+								<td>
+									<button class="btn btn-info btn-sm" id="orderShow">
+										<span class="glyphicon glyphicon-list-alt"></span>订单
+									</button>
+								</td>
 								<!-- <a href="customer/${customer.id}">修改</a> -->
 								<td>
-									<button class="btn btn-success btn-sm">
+									<button class="btn btn-success btn-sm" id="customerEdit">
 										<span class="glyphicon glyphicon-pencil"></span>修改
 									</button>
 								</td>
@@ -110,9 +136,16 @@
 			</div>
 		</div>
 	</div>
+	<script>
+		$(function() {
+			$(document).on("click", "#orderShow", function() {
+				$("#orderShowModal").modal()
+			})
+			$(document).on("click", "#customerEdit", function() {
+				$("#customerEditModal").modal()
+			})
 
-
-
-
+		});
+	</script>
 </body>
 </html>

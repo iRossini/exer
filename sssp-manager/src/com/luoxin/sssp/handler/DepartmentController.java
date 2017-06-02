@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.luoxin.sssp.entities.Customer;
 import com.luoxin.sssp.entities.Department;
 import com.luoxin.sssp.service.DepartmentService;
 
@@ -43,18 +42,18 @@ public class DepartmentController {
 	}
 
 	// ===========下面是逻辑业务，上面是需要的参数===============================
-	// 新增一个仪器
+	// 新增一个部门
 	@RequestMapping(value = "/department-input", method = RequestMethod.GET)
 	public String input(Map<String, Object> map) {
 		map.put("department", new Department());
 		return "department-input";
 	}
 
-	// 保存新增的信息
+	// 保存新增的部门
 	@RequestMapping(value = "/department-save", method = RequestMethod.POST)
 	public String save(Department department) {
 		departmentService.saveOrUpdate(department);
-		return "save";
+		return "redirect:/department-list";
 	}
 
 	// 显示所有的部门
